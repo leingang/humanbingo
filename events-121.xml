@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!-- See also http://www.teachablemoment.org/middle/findsomeonewho.html -->
+<events xmlns="http://www.math.harvard.edu/~leingang/2007/06/25/S-1ab/Icebreaker">
+  <category name="Origin">
+    <event>United States midwest</event>
+    <event>United States east coast</event>
+    <event>United States west coast</event>
+    <event>Boston area</event>
+    <event>New York City area</event>
+    <event>United Kingdom</event>
+    <event>Europe</event>
+    <event>South Asia</event>
+    <event>East Asia</event>
+    <event>Middle East</event>
+    <event>Central America</event>
+    <event>South America</event>
+    <event>country once colonized by U.K.</event>
+    <event>country once colonized by France</event>
+    <event>Africa</event>
+  </category>
+  <category name="Housing">
+  	<!-- first year, see http://www.nyu.edu/life/living-at-nyu/on-campus-living/explore-the-residencehalls.html -->
+  	<event>Founders Hall</event>
+  	<event>Goddard</event>
+    <event>Hayden Hall</event>
+    <event>Third Avenue North</event>
+    <event>University Hall</event>
+    <event>Weinstein Hall</event>
+	<!-- upperclass -->
+    <event>13th Street</event>
+    <event>Alumni Hall</event>
+    <event>Brittany Hall</event>
+    <event>Broome Street</event>
+    <event>Carlyle Court</event>
+    <event>Coral Towers</event>
+    <event>Gramercy Green</event>
+    <event>Greenwich Hotel</event>
+    <event>Lafayette Hall</event>
+    <event>Palladium Hall</event>
+    <event>Second Street</event>
+    <event>Green House at 7th Street</event>    
+  </category>
+  <category name="Math">
+    <event>has taken AP Calculus BC</event>
+    <event>has taken AP Calculus AB</event>
+    <event>took calculus more than one year ago</event>
+    <event>is math anxious</event>
+    <event>thinks math is cool</event>
+    <event>thinks math is for losers</event>
+    <event>can solve two equations in two variables</event>
+    <event>knows the sine of pi/3</event>
+    <event>knows ten digits of pi</event>
+    <event>is taking this course for a concentration</event>
+    <event>is taking this course for fun</event>
+    <event>can name four famous mathematicians</event>
+    <event>has taken a geometry course</event>
+    <event>knows who invented calculus</event>
+    <event>knows the five most important numbers</event>
+  </category>
+  <category name="Interests">
+    <event>baseball</event>
+    <event>football (American)</event>
+    <event>football (Soccer)</event>
+    <event>rock climbing</event>
+    <event>cricket</event>
+    <event>politics</event>
+    <event>poker</event>
+    <event>burritos</event>
+    <event>popular music</event>
+    <event>classical music</event>
+    <event>jazz music</event>
+    <event>theater</event>
+    <event>country music</event>
+    <event>hockey</event>
+    <event>chess</event>
+    <event>video games</event>
+    <event>kakuro</event>
+  </category>
+  <category name="Potpourri">
+    <event>can wiggle his/her ears</event>
+    <event>can raise one eyebrow</event>
+    <event>speaks at least three languages</event>
+    <event>can eat a large pizza by him/herself</event>
+    <event>can do a Minnesota accent</event>
+    <event>has visited at least three countries</event>
+    <event>is double-jointed</event>
+    <event>can play a musical instrument</event>
+    <event>can cook</event>
+    <event>has read all the Harry Potter books </event>
+    <event>can twirl a pen balanced on his/her hand</event>
+    <event>has been to Grant's Tomb</event>
+    <event>knows the capital of Burkina Faso</event>
+    <event>can fly an airplane</event>
+    <event>is already sleep-deprived</event>
+    <event>is developing a secret crush</event>
+    <event>has a blog</event>
+    <event>has over 100 facebook/myspace friends</event>
+    <event>has a Wii</event>
+    <event>has a favorite interstate highway</event>
+  </category>
+</events>

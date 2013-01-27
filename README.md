@@ -13,7 +13,7 @@ History
 -------
 
 Derek Bruff wrote a ColdFusion script to create bingo pages as HTML in 2006.  I (MPL)
-used it as an excuse to learn python.  I have been using it since 2007.
+used it as an excuse to learn python.  I have been using it since 2007, and finally uploaded to github in 2013.
 
 Usage
 -----

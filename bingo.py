@@ -13,7 +13,7 @@ Created 2006-02-05.  Modified once or twice a year since then.
 Usage
 =====
 
-Read event.xml file as argument, writes a bingo card to stdout.  If you want more than 
+Read event.xml file as argument, writes a bingo card to stdout.  If you want more than
 one, use the -n <number> option, and <number> files will be written.  They will have
 file names of the form `card%02d.html` unless the -f/--format option is specified.
 """
@@ -25,6 +25,7 @@ import logging
 import argparse
 import random
 
+from jinja2 import Environment, FileSystemLoader
 from xml.sax import ContentHandler, parse, ErrorHandler
 
 
@@ -81,6 +82,8 @@ class BingoCardWriter:
     """Class to write Card to File"""
 
     def __init__(self):
+        env = Environment(loader=FileSystemLoader('.'))
+        self.template = env.get_template("card_tpl.html")
         pass
 
     def writeToFile(self, card, fileName):
@@ -89,59 +92,11 @@ class BingoCardWriter:
         self.output.writelines(self.toString(card))
 
     def toString(self, card):
-        """serialize card as string"""
-        output = """<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html>
-  <head>
-    <title>Name Bingo</title>
-    <style type="text/css">
-      h1 p th td {
-        font-family: Papyrus;
-      }
-      h1 {
-        text-align: Center;
-	font-family: "Comic Sans MS"
-      }
-
-      #bingoCard {
-        margin-left:auto; margin-right:auto;
-      }
-
-      #bingoCard,tr,td {
-        font-family: "Comic Sans MS";	
-      }
-
-      #bingoCard th, #bingoCard td {
-        width: 20%;
-      }
-    </style>
-  </head>
-<body>
-  <h1>Name Bingo</h1>
-  
-  <p>Find people in the class (other than yourself) who match the descriptions in each box; write their name in the box.</p>
-
-  <p>Try to fill as many boxes as possible (one box per person). Five in a row wins!</p>
-
-  <table border="2" cellspacing="0" cellpadding="4" align="center" id="bingoCard">
-  
-"""
-        # top row is categories
-        categories = card.categories
-        output += "    <tr>\n"
-        for category in categories:
-            output += "      <th>%s</th>\n" % category
-        output += "    </tr>\n"
-        for row in card.cells:
-            output += '    <tr>\n'
-            for cell in row:
-                output += '      <td width="120" height="120" align="center" valign="center">%s</td>\n' % cell
-            output += "    </tr>\n"
-        output += """  </table>
-</body>
-</html>
-"""
-        return output
+        """serialize card as HTML string"""
+        template_vars = {
+            'card': card
+        }
+        return self.template.render(template_vars)
 
 
 def usage():

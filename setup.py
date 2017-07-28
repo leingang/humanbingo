@@ -28,7 +28,7 @@ test_requirements = [
 
 setup(
     name='humanbingo',
-    version='0.1.0',
+    version='1.1.0',
     description='Create cards for the "Human Bingo" icebreaker game, with customizable properties and templating',  # noqa
     long_description=readme + '\n\n' + history,
     author="Matthew Leingang",

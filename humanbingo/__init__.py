@@ -16,7 +16,7 @@ from xml.sax import ContentHandler, parse, ErrorHandler
 
 __author__ = """Matthew Leingang"""
 __email__ = 'mleingang@gmail.com'
-__version__ = '2.0.0'
+__version__ = '2.0.1'
 
 
 class EventsParser(ContentHandler):

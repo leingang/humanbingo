@@ -1,5 +1,5 @@
 Welcome to Human Bingo's documentation!
-======================================
+=======================================
 
 Contents:
 

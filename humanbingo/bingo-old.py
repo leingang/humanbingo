@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 """Generate a bingo card for Icebreaking
 
+DEPRECATED.  Just leaving here to save code for refactoring.
+
 Authors
 =======
 

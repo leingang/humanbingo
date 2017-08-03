@@ -27,8 +27,8 @@ Synopsis
 This is an icebreaker game to play on the first day of class.  See 
 `About.com`_ or `WikiHow`_ for references.
 
-.. `About.com`: http://adulted.about.com/od/icebreakers/qt/peoplebingo.htm
-.. `WikiHow`: http://www.wikihow.com/Play-Human-Bingo
+.. _`About.com`: http://adulted.about.com/od/icebreakers/qt/peoplebingo.htm
+.. _`WikiHow`: http://www.wikihow.com/Play-Human-Bingo
 
 Features
 --------
@@ -47,7 +47,7 @@ The package includes a script :code:`humanbingo`.  Call it like this::
         [-d|--debug]
         [-o|--output] OUTPUTFILE        
         [-f|--input-format] (xml|yaml) 
-        [-F|--output-format] (html|pdf)
+        [-F|--output-format] (html)
         INPUTFILE
 
 Read properties file as its sole argument.  If neither :code:`-n` or 
@@ -56,7 +56,7 @@ If :code:`-n NUMBER` or :code:`--number=NUMBER` is
 specified, writes NUMBER cards to separate files.
 
 To easily print these cards, they can be converted to PDF and concatenated.  
-The `wkdpdf`_ command-line utility can be used for the form and `pdftk`_ 
+The `wkpdf`_ command-line utility can be used for the form and `pdftk`_ 
 for the latter::
 
     $ for file in `ls card*.html`; do
@@ -67,6 +67,8 @@ for the latter::
 .. _`wkpdf`: http://plessl.github.com/wkpdf/
 .. _`pdftk`: http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/
 
+Eventually a PDF writer will be included, to be specified in the 
+:code:`--output-format` option.
 
 * Free software: MIT license
 * Documentation: https://humanbingo.readthedocs.io.
@@ -76,7 +78,6 @@ TODO
 
 * Write YAML parser
 * Write PDF writer
-* Standardize interface
 
 Credits
 -------

@@ -10,7 +10,7 @@ Human Bingo
         :target: https://travis-ci.org/leingang/humanbingo
 
 .. image:: https://readthedocs.org/projects/humanbingo/badge/?version=latest
-        :target: https://humanbingo.readthedocs.io/en/latest/?badge=latest
+        :target: https://human-bingo.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
 .. image:: https://pyup.io/repos/github/leingang/humanbingo/shield.svg
@@ -71,7 +71,7 @@ Eventually a PDF writer will be included, to be specified in the
 :code:`--output-format` option.
 
 * Free software: MIT license
-* Documentation: https://humanbingo.readthedocs.io.
+* Documentation: https://human-bingo.readthedocs.io.
 
 TODO
 ----

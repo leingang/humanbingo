@@ -2,17 +2,26 @@
 
 """Abstract models for Human Bingo."""
 from collections import namedtuple
+import random
 
 
 class Card(object):
-    """A single bingo card"""
-
-    cells = None
-    """A 5x5 list of lists of bingo card cells.  Each list is one row."""
+    """A single bingo card
     
-    def __init__(self, cells=None):
+    Attributes:
+        spec (CardSetSpec): a card set specification record
+        cells (list): A 5x5 list of lists of bingo card cells.
+            Each list is one row
+    """
+
+    def __init__(self, spec, cells=None):
         """Constructor"""
+        self.spec = spec
         self.cells = cells
+
+    def __repr__(self):
+        return "<humanbingo.models.Card object spec={}, cells={}>"\
+            .format(self.spec, self.cells)
 
 
 class CardSetSpec(namedtuple('CardSetSpec',
@@ -25,7 +34,7 @@ class CardSetSpec(namedtuple('CardSetSpec',
     Attributes:
         name (string): The title on the cards (e.g., 'Human Bingo')
         instructions (string): Instructions to go below the title and
-            above the grid.
+            above the grid.Paragraphs can be separated by double-newlines
         categories (list): the names of the columns.
         category_values (dict of lists): the values that can appear in
             the cells below each column
@@ -35,15 +44,15 @@ class CardSetSpec(namedtuple('CardSetSpec',
     pass
 
 
-def card(spec):
-    """Create a card.
+def get_card(spec):
+    """Get or "draw" a card from the supplied specification
 
     Args:
         spec (CardSetSpec): the data describing the card
 
     Returns:
         Card: An instance of :class:`Card` with cells randomly
-              populated.
+        populated.
     """
     cells = []
     cellst = []
@@ -56,4 +65,4 @@ def card(spec):
             cells[i][j] = cellst[j][i]
     # free space
     cells[2][2] = spec.free_space_value
-    return Card(cells=cells)
+    return Card(spec, cells)

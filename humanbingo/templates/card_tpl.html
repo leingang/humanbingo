@@ -1,14 +1,14 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
   <head>
-    <title>Name Bingo</title>
+    <title>{{ title }}</title>
     <style type="text/css">
       h1 p th td {
         font-family: Papyrus;
       }
       h1 {
         text-align: Center;
-	font-family: "Comic Sans MS"
+	      font-family: "Comic Sans MS"
       }
 
       #bingoCard {
@@ -25,23 +25,23 @@
     </style>
   </head>
 <body>
-  <h1>Name Bingo</h1>
+  <h1>{{ title }}</h1>
   
-  <p>Find people in the class (other than yourself) who match the descriptions in each box; write their name in the box.</p>
-
-  <p>Try to fill as many boxes as possible (one box per person). Five in a row wins!</p>
+  {%- for para in instructions %}
+  <p>{{ para }}</p>
+  {%- endfor %}
 
   <table border="2" cellspacing="0" cellpadding="4" align="center" id="bingoCard">
     <tr>
-        {%- for category in card.categories %}
+        {%- for category in card.spec.categories %}
         <th>{{ category }}</th>
         {%- endfor %}
     </tr>
     {%- for row in card.cells %}
     <tr>
-        {% for cell in row -%}
+        {%- for cell in row %}
         <td width="120" height="120" align="center" valign="center">{{ cell }}</td>
-        {% endfor %}
+        {%- endfor %}
     </tr>
     {%- endfor %}
   </table>

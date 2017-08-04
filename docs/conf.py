@@ -44,7 +44,8 @@ import humanbingo
 # MPL 2017-08-01: The napoleon extension allows for Google-style docstrings.
 # See http://www.sphinx-doc.org/en/stable/ext/napoleon.html
 extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode',
-              'sphinx.ext.napoleon']
+              'sphinx.ext.napoleon',
+              'sphinx.ext.intersphinx']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -277,3 +278,6 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+# -- Options for intersphinx
+intersphinx_mapping = {'python':('https://docs.python.org/3.5', None)}

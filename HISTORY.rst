@@ -2,6 +2,14 @@
 History
 =======
 
+Version 2.1.0 (August 4, 2017)
+------------------------------
+
+Added the ability to specify card sets with a YAML file instead of the
+old XML format.  Pass :code:`-f yaml` to :code:`humanbingo`.
+
+Lots of improvements to documentation.
+
 Version 2.0.2 (August 3, 2017)
 ------------------------------
 

@@ -14,7 +14,8 @@ with open('HISTORY.rst') as history_file:
 requirements = [
     'Click>=6.0',
     'jinja2>=2.9.6',
-    'pyyaml>=3.12',
+    'pyyaml>=3.12',  # more stable, old
+    'ruamel.yaml>=0.15.23',  # newer, supports !!omap
     'weasyprint>=0.39',
 ]
 

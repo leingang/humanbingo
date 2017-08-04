@@ -1,0 +1,90 @@
+# -*- coding: utf-8 -*-
+# YAML 1.2
+# For a Discrete Math class
+name: Human Bingo
+instructions: |
+  Find people in the class (other than yourself) who match the descriptions
+  in each box; write their name in the box.
+
+  Try to fill as many boxes as possible (one box per person). Five in a row wins!
+properties: !!omap
+# First-level items are the category names
+# Second-level items are the values for those categories
+  - Origin:
+    - New York City
+    - New Jersey
+    - US East Coast
+    - US West Coast
+    - US Midwest
+    - US South
+    - US Southwest
+    - China
+    - Korea
+    - United Kingdom
+    - non-UK but other Commonwealth
+    - La Francophonie
+    - China
+    - Korea
+  - Housing: # https://www.nyu.edu/students/student-information-and-resources/housing-and-dining/on-campus-living/residence-halls.html
+    # First Year Halls
+    - Brittany Hall
+    - Founders Hall
+    - Goddard Hall
+    - Greenwich Hall
+    - Lipton Hall
+    - Rubin Hall
+    - Third Avenue North
+    - UHall
+    - Weinstein Hall
+    # Upperclass Halls
+    - Alumni Hall
+    - Broome Street
+    - Carlyle Court
+    - Coral Tower
+    - Gramercy Green
+    - Green House 7th Street
+    - Lafayette Hall
+    - Palladium Hall
+    - Second Street
+    - Senior House 13th Street
+    # Other
+    - off-campus, Manhattan
+    - off-campus, Bronx
+    - off-campus, Queens
+    - off-campus, Staten Island
+    - off-campus, New Jersey
+    - off-campus, Yonkers
+  - Math and Computing:
+    - thinks that math is cool
+    - thinks that math is for losers
+    - is required to take this class
+    - is math anxious
+    - can name the five most import numbers
+    - can name four famous mathematicians
+    - can program in JavaScript
+    - can program in Python
+  - Interests:
+    - Running
+    - Football (soccer)
+    - Football (American)
+    - Outdoors
+    - Music (playing)
+    - Jazz
+    - Country Music
+    - Burritos
+    - Hockey
+    - Chess
+    - Rock climbing
+    - Poker
+    - Politics
+  - Potpourri:
+    - has a blog
+    - has a Windows Phone
+    - has a fidget spinner
+    - knows who's buried in Grant's tomb
+    - can wiggle their ears
+    - can raise one eyebrow
+    - speaks at least three languages
+    - is developing a secret crush
+    - can twirl a pen on their hand
+free_space_value: Wants to get an A in this class

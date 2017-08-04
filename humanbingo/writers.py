@@ -13,11 +13,11 @@ class CardWriter(object):
 
         Args:
             card (models.Card): card to be written
-            destination (string or file-like object): file to be written.
+            destination (string or file-like object): where to write the card.
                 If a string is passed, it will be treated as a path name and
                 opened for writing.  To write to stdout, pass
-                :code:`sys.stdout`. To save output as a variable, pass an
-                instance of :py:class:`StringIO`.
+                :obj:`sys.stdout`. To save output as a variable, pass an
+                instance of :class:`io.StringIO`.
 
         Returns:
             void
@@ -28,8 +28,42 @@ class CardWriter(object):
 class HtmlWriter(CardWriter):
     """Writer object for HTML files
 
-    Uses Jinja2 templating to generate HTML.
-    """
+    Uses Jinja2_ templating to generate HTML.
+    The default template (minus CSS) looks like this:
+
+    .. code-block:: html
+
+        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+        <html>
+        <head>
+            <title>{{ title }}</title>
+        </head>
+        <body>
+        <h1>{{ title }}</h1>
+        
+        {%- for para in instructions %}
+        <p>{{ para }}</p>
+        {%- endfor %}
+
+        <table border="2" cellspacing="0" cellpadding="4" align="center" id="bingoCard">
+            <tr>
+                {%- for category in card.spec.categories %}
+                <th>{{ category }}</th>
+                {%- endfor %}
+            </tr>
+            {%- for row in card.cells %}
+            <tr>
+                {%- for cell in row %}
+                <td width="120" height="120" align="center" valign="center">{{ cell }}</td>
+                {%- endfor %}
+            </tr>
+            {%- endfor %}
+        </table>
+        </body>
+        </html>
+
+    .. _Jinja2: http://jinja.pocoo.org/docs/2.9/    
+    """  # noqa
 
     _template = None
 
@@ -48,6 +82,7 @@ class HtmlWriter(CardWriter):
         self._template = env.get_template(template_path)
 
     def write(self, card, destination):
+        """Implementation of :meth:`CardWriter.write`"""
         template_vars = {
             'card': card,
             'title': card.spec.name,

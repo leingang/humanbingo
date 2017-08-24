@@ -20,6 +20,7 @@
       }
 
       #bingoCard th, #bingoCard td {
+        border: 2px solid black;
         width: 20%;
       }
     </style>
@@ -31,7 +32,7 @@
   <p>{{ para }}</p>
   {%- endfor %}
 
-  <table border="2" cellspacing="0" cellpadding="4" align="center" id="bingoCard">
+  <table cellspacing="0" cellpadding="4" align="center" id="bingoCard">
     <tr>
         {%- for category in card.spec.categories %}
         <th>{{ category }}</th>

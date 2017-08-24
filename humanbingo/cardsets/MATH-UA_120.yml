@@ -13,6 +13,7 @@ properties: !!omap
   - Origin:
     - New York City
     - New Jersey
+    - Boston area
     - US East Coast
     - US West Coast
     - US Midwest
@@ -22,9 +23,9 @@ properties: !!omap
     - Korea
     - United Kingdom
     - non-UK but other Commonwealth
+    - a European country
+    - an African country
     - La Francophonie
-    - China
-    - Korea
   - Housing: # https://www.nyu.edu/students/student-information-and-resources/housing-and-dining/on-campus-living/residence-halls.html
     # First Year Halls
     - Brittany Hall
@@ -57,12 +58,20 @@ properties: !!omap
   - Math and Computing:
     - thinks that math is cool
     - thinks that math is for losers
-    - is required to take this class
+    - is required to take this course
+    - is taking this course for fun
     - is math anxious
-    - can name the five most import numbers
+    - can name the five most important numbers
     - can name four famous mathematicians
     - can program in JavaScript
     - can program in Python
+    - can program in Lua
+    - knows ten digits of π
+    - has a favorite number 
+    - can state Fermat's last theorem
+    - is a math major
+    - knows the Königsberg bridge problem
+    - took AP Calculus in high school
   - Interests:
     - Running
     - Football (soccer)
@@ -77,14 +86,22 @@ properties: !!omap
     - Rock climbing
     - Poker
     - Politics
+    - Baseball
+    - Coffee
   - Potpourri:
     - has a blog
     - has a Windows Phone
     - has a fidget spinner
-    - knows who's buried in Grant's tomb
+    - has read all the Harry Potter books
+    - has a Citi Bike key
     - can wiggle their ears
     - can raise one eyebrow
+    - can twirl a pen on their hand
+    - can fly an airplane
     - speaks at least three languages
     - is developing a secret crush
-    - can twirl a pen on their hand
+    - is already sleep-deprived
+    - is double-jointed
+    - knows who's buried in Grant's tomb
+    - knows the capital of Burkina Faso
 free_space_value: Wants to get an A in this class

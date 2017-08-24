@@ -33,54 +33,76 @@ This is an icebreaker game to play on the first day of class.  See
 Features
 --------
 
-* Read XML and YAML files
-* Write HTML and PDF files
+* Read cardset specifications as XML and YAML files.  The YAML specification is
+  newer, more flexible, and easier to write.  The XML specification is older,
+  and seemed like a good idea at the time.
 
+* Write HTML and PDF files.  Since it's more likely the cards will be printed
+  onto paper, the default is writing PDF.  Originally, only HTML files were 
+  created, and PDF conversion was done by a third-party utility (wkhtmltopdf_).
+  In version 3 the PDF writer was baked in. Since the PDF writer internally
+  creates HTML first, the HTML feature is still maintained.
+
+  .. _wkhtmltopdf: https://wkhtmltopdf.org/ 
 
 Usage
 -----
 
-The package includes a script :code:`humanbingo`.  Call it like this::
+Installing the package exposes a script :code:`humanbingo`.  Call it like this::
 
     $ humanbingo [-n|--number NUM]
         [-v|--verbose]
         [-d|--debug]
         [-o|--output] OUTPUTFILE        
-        [-f|--input-format] (xml|yaml) 
-        [-F|--output-format] (html)
+        [-f|--input-format] (yaml|xml) 
+        [-F|--output-format] (pdf|html)
         INPUTFILE
 
 Read properties file as its sole argument.  If neither :code:`-n` or 
-:code:`--number` option is not specified, write one bingo card.  
+:code:`--number` option is not specified, write one bingo card to stdout.  
 If :code:`-n NUMBER` or :code:`--number=NUMBER` is 
 specified, writes NUMBER cards to separate files.
 
-To easily print these cards, they can be converted to PDF and concatenated.  
-The `wkpdf`_ command-line utility can be used for the form and `pdftk`_ 
-for the latter::
+.. warning::
 
-    $ for file in `ls card*.html`; do
-      /path/to/wkpdf --source=$file --output=`basename $file .html`.pdf
-    done
+    At this time writing PDF to stdout is not supported.  But you probably
+    don't want to do that anyway.
+
+
+
+To easily print the PDF cards, they can be concatenated with `pdftk`_::
+
     $ /path/to/pdftk card*.pdf cat output allcards.pdf
 
-.. _`wkpdf`: http://plessl.github.com/wkpdf/
 .. _`pdftk`: http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/
 
-Eventually a PDF writer will be included, to be specified in the 
-:code:`--output-format` option.
+Documentation
+-------------
 
-* Free software: MIT license
-* Documentation: https://human-bingo.readthedocs.io.
+See https://human-bingo.readthedocs.io.
 
-TODO
-----
+License
+-------
 
-* Write YAML parser
-* Write PDF writer
+Free software: MIT license
 
 Credits
 -------
+
+Human bingo relies on a lot of big python packages, heartily endorsed.
+
+* Jinja2_ for templating
+* Click_ for publishing command-line applications
+* WeasyPrint_ for converting HTML to PDF
+
+.. _Jinja2: http://jinja.pocoo.org/
+.. _Click: http://click.pocoo.org/
+.. _WeasyPrint: http://weasyprint.org/
+
+We also use ruamel.yaml_ over PyYaml since it supports a few more features (notably,
+the :code:`!!omap` sequence declaration).
+
+.. _ruamel.yaml: https://yaml.readthedocs.io/en/latest/
 
 This package was created with Cookiecutter_ and the `audreyr/cookiecutter-pypackage`_ project template.
 

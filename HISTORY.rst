@@ -2,6 +2,20 @@
 History
 =======
 
+Version 3.0.1 (August 24, 2017)
+-------------------------------
+
+Updated history file for version 3.0.0.
+
+Version 3.0.0 (August 24, 2017)
+-------------------------------
+
+Added the PDF writer.  Pass :code:`-F pdf` to explicitly write PDF files.
+
+Backwards-incompatible changes: YAML input and PDF output are now default.
+
+Improved refactoring and documentation.
+
 Version 2.1.0 (August 4, 2017)
 ------------------------------
 

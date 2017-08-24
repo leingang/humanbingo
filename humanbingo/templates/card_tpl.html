@@ -1,27 +1,32 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>{{ title }}</title>
     <style type="text/css">
-      h1 p th td {
-        font-family: Papyrus;
-      }
+      
       h1 {
         text-align: Center;
 	      font-family: "Comic Sans MS"
       }
 
-      #bingoCard {
+      table#bingoCard {
         margin-left:auto; margin-right:auto;
-      }
-
-      #bingoCard,tr,td {
-        font-family: "Comic Sans MS";	
+        border-spacing: 0px;
+        border-collapse: separate;
       }
 
       #bingoCard th, #bingoCard td {
         border: 2px solid black;
         width: 20%;
+        text-align: center;
+        font-family: "Comic Sans MS";	
+        padding: 4px;
+      }
+
+      #bingoCard td {
+        height: 120px;
       }
     </style>
   </head>
@@ -32,7 +37,7 @@
   <p>{{ para }}</p>
   {%- endfor %}
 
-  <table cellspacing="0" cellpadding="4" align="center" id="bingoCard">
+  <table id="bingoCard">
     <tr>
         {%- for category in card.spec.categories %}
         <th>{{ category }}</th>
@@ -41,7 +46,7 @@
     {%- for row in card.cells %}
     <tr>
         {%- for cell in row %}
-        <td width="120" height="120" align="center" valign="center">{{ cell }}</td>
+        <td>{{ cell }}</td>
         {%- endfor %}
     </tr>
     {%- endfor %}

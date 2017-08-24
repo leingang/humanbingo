@@ -2,7 +2,10 @@
 
 """Objects to handle writing bingo cards to files."""
 
+import io
 import logging
+
+import weasyprint
 
 
 class CardWriter(object):
@@ -10,6 +13,8 @@ class CardWriter(object):
 
     def write(self, card, destination):
         """Write a single card.
+
+        This abstract method must be implemented in descendants.
 
         Args:
             card (models.Card): card to be written
@@ -20,7 +25,7 @@ class CardWriter(object):
                 instance of :class:`io.StringIO`.
 
         Returns:
-            void
+            None
         """
         raise NotImplementedError
 
@@ -29,11 +34,10 @@ class HtmlWriter(CardWriter):
     """Writer object for HTML files
 
     Uses Jinja2_ templating to generate HTML.
-    The default template (minus CSS) looks like this:
+    The default template (minus CSS) looks something like this:
 
     .. code-block:: html
 
-        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
         <html>
         <head>
             <title>{{ title }}</title>
@@ -45,7 +49,7 @@ class HtmlWriter(CardWriter):
         <p>{{ para }}</p>
         {%- endfor %}
 
-        <table border="2" cellspacing="0" cellpadding="4" align="center" id="bingoCard">
+        <table id="bingoCard">
             <tr>
                 {%- for category in card.spec.categories %}
                 <th>{{ category }}</th>
@@ -54,7 +58,7 @@ class HtmlWriter(CardWriter):
             {%- for row in card.cells %}
             <tr>
                 {%- for cell in row %}
-                <td width="120" height="120" align="center" valign="center">{{ cell }}</td>
+                <td>{{ cell }}</td>
                 {%- endfor %}
             </tr>
             {%- endfor %}
@@ -95,3 +99,21 @@ class HtmlWriter(CardWriter):
         except AttributeError:
             with open(destination, 'w') as f:
                 f.write(html)
+
+
+class PdfWriter(HtmlWriter):
+    """Writer object for PDFs
+
+    Uses Jinja2_ to create a temporary HTML object,
+    then WeasyPrint_ to generate PDF.
+
+    .. _WeasyPrint: http://weasyprint.org/
+    """
+
+    def write(self, card, destination):
+        buf = io.StringIO()
+        super(PdfWriter, self).write(card, buf)
+        logging.debug('buf: %s', buf.getvalue())
+        html = weasyprint.HTML(string=buf.getvalue())
+        buf.close()
+        html.write_pdf(destination)

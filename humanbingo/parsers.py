@@ -58,7 +58,7 @@ class XmlParser(CardSetSpecParser, xml.sax.ContentHandler):
         <!-- ... -->
         </events>
 
-    In version 2.x extra properties are to be added to allow more
+    In version 2.1 extra properties are to be added to allow more
     customization within the specification file.  To preserve backwards
     compatibility, values which were originally hardcoded will be supplied as
     defaults.
@@ -88,7 +88,7 @@ class XmlParser(CardSetSpecParser, xml.sax.ContentHandler):
         self._current_text += text
 
     def endElement(self, name):
-        "Hand an XML end tag"
+        "Handle an XML end tag"
         if (name == "event"):
             value = self._current_text.strip()
             self._events[self._current_category].append(value)

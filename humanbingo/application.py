@@ -2,8 +2,11 @@
 
 """The application object for dependency injection"""
 
+import sys
+
 import humanbingo.parsers
 import humanbingo.writers
+import humanbingo.models
 
 
 class Application(object):
@@ -18,8 +21,11 @@ class Application(object):
         self.number = number
 
     def get_parser(self):
-        """Produce a :class:`humanbingo.Parser` object customized
-        by application configuration"""
+        """Produce a parser customized by application configuration
+        
+        Returns:
+            :class:`humanbingo.parsers.Parser`
+        """
         parser_classes = {'xml': humanbingo.parsers.XmlParser,
                           'yaml': humanbingo.parsers.YamlParser}
         parser_class = parser_classes[self.input_format]
@@ -28,6 +34,37 @@ class Application(object):
         return parser_class()
 
     def get_writer(self):
-        """Produce a :class:`humanbingo.Writer` object customized
-        by application configuration"""
-        return humanbingo.writers.HtmlWriter()
+        """Produce a writer customized by application configuration
+        
+        Returns:
+            :class:`humanbingo.writers.Writer`
+        """
+        writer_classes = {'html': humanbingo.writers.HtmlWriter,
+                          'pdf': humanbingo.writers.PdfWriter}
+        writer_class = writer_classes[self.output_format]
+        # may need to pass some arguments to this constructor
+        # at some point
+        return writer_class()
+
+    def get_generator(self):
+        """Produce a card generator customized by application configuration
+                    
+        Returns:
+            :class:`humanbingo.models.CardGenerator`
+        """
+        return humanbingo.models.CardGenerator(number=self.number)
+
+    def get_destination(self, index=None):
+        """Destination for a card, customized by application configuration.
+
+        Args:
+            index (int or None): index of the card in the sequence
+
+        Returns:
+            str or sys.stdout: the name of the file to be
+            written, or sys.stdout if no file is to be written.
+        """
+        if self.number is None:
+            return sys.stdout
+        else:
+            return "card%02d.%s" % (index, self.output_format)

@@ -44,25 +44,38 @@ class CardSetSpec(namedtuple('CardSetSpec',
     pass
 
 
-def get_card(spec):
-    """Get or "draw" a card from the supplied specification
+class CardGenerator(object):
+    """Generates an iterable of cards
 
-    Args:
-        spec (CardSetSpec): the data describing the card
-
-    Returns:
-        Card: An instance of :class:`Card` with cells randomly
-        populated.
+    Attributes:
+        spec (CardSetSpec): the data describing the cardset
+        number (int): the number of cards to be generated
     """
-    cells = []
-    cellst = []
-    for category in spec.categories:
-        cellst.append(random.sample(spec.category_values[category], 5))
-    # transpose cells
-    for i in range(0, 5):
-        cells.append([None, None, None, None, None])
-        for j in range(0, 5):
-            cells[i][j] = cellst[j][i]
-    # free space
-    cells[2][2] = spec.free_space_value
-    return Card(spec, cells)
+
+    def __init__(self, number=None):
+        if number is None:
+            number = 1
+        self.number = number
+
+    def cards(self, spec):
+        """generate the cards
+
+        Args:
+            spec (CardSetSpec): the data describing the card
+
+        Yields:
+            :class:`humanbingo.models.Card`: cards with cells randomly populated
+        """
+        for i in range(1, self.number+1):
+            cells = []
+            cellst = []
+            for category in spec.categories:
+                cellst.append(random.sample(spec.category_values[category], 5))
+            # transpose cells
+            for i in range(0, 5):
+                cells.append([None, None, None, None, None])
+                for j in range(0, 5):
+                    cells[i][j] = cellst[j][i]
+            # free space
+            cells[2][2] = spec.free_space_value
+            yield Card(spec, cells)

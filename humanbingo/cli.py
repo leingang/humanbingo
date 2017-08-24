@@ -7,8 +7,6 @@ import logging
 import sys
 
 from humanbingo.application import Application
-from humanbingo.models import get_card
-
 
 @click.command()
 @click.argument('infile', type=click.File('rb'),
@@ -26,13 +24,13 @@ from humanbingo.models import get_card
               help='generate and save NUMBER cards')
 @click.option('-f', '--input-format',
               type=click.Choice(['xml', 'yaml']),
-              default='xml',
+              default='yaml',
               help="Input file format")
 @click.option('-F', '--output-format',
               type=click.Choice(['html', 'pdf']),
-              default='html',
+              default='pdf',
               help="Output file format")
-def main(infile, number, input_format, output_format='html',
+def main(infile, number, input_format, output_format,
          log_level=logging.WARNING):
     """Console script for humanbingo."""
     logging.basicConfig(level=log_level)
@@ -43,18 +41,11 @@ def main(infile, number, input_format, output_format='html',
                       infile=infile)
     parser = app.get_parser()
     spec = parser.parse(infile)
+    generator = app.get_generator()
     writer = app.get_writer()
-    if number:
-        for i in range(1, number + 1):
-            output_path = "card%02d.html" % i
-            card = get_card(spec)
-            logging.info("Writing card {}.".format(output_path))
-            writer.write(card, output_path)
-    else:
-        # just do one and print to stdout
-        card = get_card(spec)
-        writer.write(card, sys.stdout)
-
+    for (i, card) in enumerate(generator.cards(spec), start=1):
+        output = app.get_destination(i)
+        writer.write(card, output)
 
 if __name__ == "__main__":
     main()

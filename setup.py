@@ -14,7 +14,7 @@ with open('HISTORY.rst') as history_file:
 requirements = [
     'Click>=6.0',
     'jinja2>=2.9.6',
-    'pyyaml>=3.12',  # more stable, old
+    'pyyaml>=4.2b1',  # more stable, old
     'ruamel.yaml>=0.15.23',  # newer, supports !!omap
     'weasyprint>=0.39',
 ]
@@ -47,7 +47,7 @@ setup(
     zip_safe=False,
     keywords='humanbingo',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',

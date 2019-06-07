@@ -4,6 +4,7 @@
 
 import io
 import logging
+import sys
 
 import weasyprint
 
@@ -28,6 +29,18 @@ class CardWriter(object):
             None
         """
         raise NotImplementedError
+
+    @classmethod
+    def default_destination(cls):
+        """Default output destination of this writer.
+        
+        Args: none
+        
+        Returns: destination (string or file-like object).
+        
+        The default default destination is :obj:`sys.stdout`.
+        """
+        return sys.stdout
 
 
 class HtmlWriter(CardWriter):
@@ -117,3 +130,9 @@ class PdfWriter(HtmlWriter):
         html = weasyprint.HTML(string=buf.getvalue())
         buf.close()
         html.write_pdf(destination)
+
+    @classmethod
+    def default_destination(cls):
+        # Can't write PDF to stdout
+        return "card.pdf"
+

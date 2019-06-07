@@ -65,6 +65,6 @@ class Application(object):
             written, or sys.stdout if no file is to be written.
         """
         if self.number is None:
-            return sys.stdout
+            return self.get_writer().default_destination()
         else:
             return "card%02d.%s" % (index, self.output_format)

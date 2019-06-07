@@ -2,6 +2,12 @@
 History
 =======
 
+Version 3.0.2 (June 7, 2019)
+----------------------------
+
+Fixed a bug where PDF output with no number of cards specified tried
+to write PDF content to stdout.
+
 Version 3.0.1 (August 24, 2017)
 -------------------------------
 

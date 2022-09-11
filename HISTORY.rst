@@ -2,6 +2,12 @@
 History
 =======
 
+Version 3.0.3 (August 31, 2022)
+-------------------------------
+
+Changed the template sans serif font to Montserrat.
+
+
 Version 3.0.2 (June 7, 2019)
 ----------------------------
 
